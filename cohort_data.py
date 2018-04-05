@@ -21,7 +21,8 @@ def unique_houses(filename):
     for line in lst_houses:
         line = line.rstrip().lstrip()
         token = line.split("|")
-        houses.add(token[2])
+        if len(token[2]) != 0:
+            houses.add(token[2])
 
     return houses
 
