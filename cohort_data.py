@@ -83,6 +83,7 @@ def hogwarts_by_house(filename):
 
     """
 
+    lst_houses = open(filename)
     all_hogwarts = []
     dumbledores_army = []
     gryffindor = []
@@ -92,7 +93,19 @@ def hogwarts_by_house(filename):
     ghosts = []
     instructors = []
 
+    tuple_list = [(dumbledores_army, "Dumbledore's Army"), (gryffindor, "Gryffindor"), (hufflepuff, "Hufflepuff"), (ravenclaw, "Ravenclaw"), (slytherin, "Slytherin"),(ghosts, "G"), (instructors, "I")]
+
     # Code goes here
+
+    for line in lst_houses:
+        line = line.rstrip().lstrip()
+        token = line.split("|")
+        for item in tuple_list:
+            if token[4] == item[1] or token[2] == item[1]:
+                item[0].append(token[1])
+    for tup_lst in tuple_list:
+        tup_lst[0].sort()
+    all_hogwarts = [indiv_tuple[0] for indiv_tuple in tuple_list]
 
     return all_hogwarts
 
