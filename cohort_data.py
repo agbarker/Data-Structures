@@ -205,11 +205,40 @@ def find_name_duplicates(filename):
 
     """
 
-    duplicate_names = set()
 
+    duplicate_names = set()
+   
+    #create lists of each cohort and ghosts
+
+    winter_16 = []
+    spring_16 = []
+    summer_16 = []
+    fall_15 = []
+
+    tuple_list = [(fall_15, "Fall 2015"), (winter_16, "Winter 2016"), (spring_16, "Spring 2016"), (summer_16, "Summer 2016")]
+
+    last_names = set()
     # Code goes here
 
+    with open(filename) as f:
+        for line in f:
+            line = line.strip()
+            tokens = line.split("|")
+            for item in tuple_list:
+                if tokens[4] == item[1]:
+                    item[0].append(tokens[1])
+                    last_names.add(tokens[1])
+
+    for item in last_names:
+        if item in tuple_list[0][0] and item in tuple_list[1][0] and item in tuple_list[2][0] and item in tuple_list[3][0]:
+            duplicate_names.add(item)
+
     return duplicate_names
+
+
+
+
+
 
 
 def find_house_members_by_student_name(student_list):
