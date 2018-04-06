@@ -180,10 +180,12 @@ def find_cohort_by_student_name(student_list):
     for student_info in student_list:
         if student_info[0] == user_name:
             cohort_name = student_info[3]
-            print "%s was in the %s cohort." % (user_name, cohort_name)
-            return None
-    print "Student not found."
-    return None
+            return "%s was in the %s cohort." % (user_name, cohort_name)
+
+    return "Student not found."
+
+
+    # print vs return
 
 
 
@@ -243,7 +245,7 @@ def find_house_members_by_student_name(student_list):
 #############################################################################
 # Here is some useful code to run these functions without doctests!
 student_list = all_students_tuple_list("cohort_data.txt")
-find_cohort_by_student_name(student_list)
+print find_cohort_by_student_name(student_list)
 # find_house_members_by_student_name(all_students_data)
 
 
