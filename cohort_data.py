@@ -266,16 +266,24 @@ def find_house_members_by_student_name(student_list):
      Oliver Wood
 
      """
-
-    # Code goes here
-
+    house_name = ""
+    cohort_name = ""
+    student_name = raw_input("Choose a student: ")
+    for item in student_list:
+        if item[0] == student_name:
+            house_name = item[1]
+            cohort_name = item[3]
+    print "{} was in {} in the {} cohort.\nThe following students are also in their house:".format(student_name, house_name, cohort_name)
+    for student in student_list:
+        if student[1] == house_name and student[3] == cohort_name and student[0] != student_name:
+            print student[0]
     return
 
 #############################################################################
 # Here is some useful code to run these functions without doctests!
 student_list = all_students_tuple_list("cohort_data.txt")
 print find_cohort_by_student_name(student_list)
-# find_house_members_by_student_name(all_students_data)
+find_house_members_by_student_name(student_list)
 
 
 ##############################################################################
